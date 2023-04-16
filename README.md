@@ -1,6 +1,6 @@
 # Purpose
 
-> This is final implimentation Terraform code to `terraform apply`, not a module
+> This is final implementation Terraform code to `terraform apply`, not a module
 
 - To install ArgoCD in Kubernetes Cluster
 - Create ArgoCD Apps
