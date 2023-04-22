@@ -26,7 +26,7 @@ resource "helm_release" "argocd" {
   wait      = true
   timeout   = 300
 
-  values = [file("${path.root}/helm/argocd/values.yaml")]
+  values = [file("${path.root}/values/values.yaml")]
 
   set {
     name  = "configs.credentialTemplates.${var.project_name}-vcs-repo.url"
