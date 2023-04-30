@@ -1,7 +1,6 @@
 variable "list_of_microservices" {
   description = "List of Microservices to create ArgoCD Applications"
   type        = list(string)
-  default     = []
 }
 
 variable "charts_repo_url" {
@@ -9,20 +8,20 @@ variable "charts_repo_url" {
   type        = string
 }
 
-variable "repo_username_argocd" {
+variable "repo_username" {
   description = "Git repo access token name or username"
   type        = string
 }
 
-variable "repo_token_argocd" {
+variable "repo_token" {
   description = "Git repo access token"
   type        = string
 }
 
-variable "argocd_slack_app_token" {
+variable "slack_app_token" {
   description = "Slack app token to register with ArgoCD for notifications"
   type        = string
-  default     = ""
+  default     = null
 }
 
 #---
@@ -31,11 +30,13 @@ variable "argocd_slack_app_token" {
 
 
 variable "domain_name" {
-  description = "Rout53 hostedzone Domain name"
+  description = "Rout53 hostedzone Domain name to create ACM DNS records in"
   type        = string
+  default     = null
 }
 
 variable "argocd_domain_name" {
   description = "ArgoCD Domain name to create ACM certificate on"
   type        = string
+  default     = null
 }

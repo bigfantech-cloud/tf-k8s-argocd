@@ -5,16 +5,15 @@ server:
     enabled: true
     ingressClassName: "nginx"
     pathType: Prefix
-    paths: 
-    - /
-    annotations: 
+    paths:
+      - /
+    annotations:
+      kubernetes.io/ingress.class: nginx
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
       nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 
-
   service:
     type: NodePort
-
 
 notifications:
   enabled: true
@@ -23,21 +22,21 @@ notifications:
     create: true
   cm:
     create: true
-  notifiers: 
+  notifiers:
     service.slack: |
       token: $slack-token
   subscriptions:
     - recipients:
-      - slack:argocd-notifications
+        - slack:argocd-notifications
       triggers:
-      - on-created
-      - on-deleted
-      - on-deployed
-      - on-health-degraded
-      - on-sync-failed
-      - on-sync-running
-      - on-sync-status-unknown
-      - on-sync-succeeded
+        - on-created
+        - on-deleted
+        - on-deployed
+        - on-health-degraded
+        - on-sync-failed
+        - on-sync-running
+        - on-sync-status-unknown
+        - on-sync-succeeded
 
   templates:
     template.app-deployed: |
@@ -249,7 +248,7 @@ notifications:
             {{end}}
             ]
           }]
-  triggers: 
+  triggers:
     trigger.on-deployed: |
       - description: Application is synced and healthy. Triggered once per commit.
         oncePer: app.status.sync.revision
